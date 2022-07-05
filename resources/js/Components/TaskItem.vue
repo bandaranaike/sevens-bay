@@ -16,18 +16,17 @@ let isChecked = ref(false);
 const emit = defineEmits(['itemCheckToggled'])
 
 watch(isChecked, (n, o) => {
-    emit('itemCheckToggled', isChecked)
+    emit('itemCheckToggled', {isChecked, id: props.task.id})
 });
 
-defineProps({
+const props = defineProps({
     isMainItem: {
         type: Boolean,
         default: true
     },
     task: {
         type: Object,
-        default: () => {
-        }
+        default: () => ({id: null})
     }
 })
 </script>
